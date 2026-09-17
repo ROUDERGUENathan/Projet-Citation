@@ -2,8 +2,8 @@
 require 'config/db.php';
 session_start();
 
-if (isset($_SESSION['admin_id'])) {
-    header('Location: admin.php');
+if (isset($_SESSION['utilisateur_id'])) {
+    header('Location: index.php');
     exit;
 }
 
@@ -15,14 +15,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $identifiantSecurise = mysqli_real_escape_string($connexion, $identifiant);
 
-    $requete = "SELECT id, identifiant, mot_de_passe FROM administrateurs WHERE identifiant = '$identifiantSecurise'";
+    $requete = "SELECT id, identifiant, mot_de_passe, role FROM utilisateurs WHERE identifiant = '$identifiantSecurise'";
     $resultat = mysqli_query($connexion, $requete);
-    $admin = mysqli_fetch_assoc($resultat);
+    $utilisateur = mysqli_fetch_assoc($resultat);
 
-    if ($admin && password_verify($motDePasseSaisi, $admin['mot_de_passe'])) {
-        $_SESSION['admin_id'] = $admin['id'];
-        $_SESSION['admin_identifiant'] = $admin['identifiant'];
-        header('Location: admin.php');
+    if ($utilisateur && password_verify($motDePasseSaisi, $utilisateur['mot_de_passe'])) {
+        $_SESSION['utilisateur_id'] = $utilisateur['id'];
+        $_SESSION['utilisateur_identifiant'] = $utilisateur['identifiant'];
+        $_SESSION['utilisateur_role'] = $utilisateur['role'];
+        header('Location: index.php');
         exit;
     }
 
@@ -33,20 +34,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<title>Connexion administrateur - Dictionnaire de citations</title>
+<title>Connexion - Dictionnaire de citations</title>
 <link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body class="page-form">
 <main class="carte">
-    <h1>Espace administrateur</h1>
-    <p>Veuillez entrer l'utilisateur et le mot de passe pour acceder au domaine administrateur :</p>
+    <h1>Connexion</h1>
 
     <?php if ($erreur !== ''): ?>
         <p class="alerte alerte-erreur"><?= htmlspecialchars($erreur) ?></p>
     <?php endif; ?>
 
     <form method="post" novalidate>
-        <label for="identifiant">Utilisateur</label>
+        <label for="identifiant">Identifiant</label>
         <input type="text" id="identifiant" name="identifiant" required autofocus>
 
         <label for="mot_de_passe">Mot de passe</label>
@@ -55,6 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Valider</button>
     </form>
 
+    <p class="lien-retour"><a href="mot-de-passe-oublie.php">Mot de passe oublie ?</a></p>
+    <p class="lien-retour"><a href="inscription.php">Pas encore de compte ? En creer un</a></p>
     <p class="lien-retour"><a href="index.php">&larr; Retour a l'accueil</a></p>
 </main>
 </body>

@@ -2,7 +2,7 @@
 require 'config/db.php';
 session_start();
 
-if (!isset($_SESSION['admin_id'])) {
+if (!isset($_SESSION['utilisateur_id']) || $_SESSION['utilisateur_role'] !== 'admin') {
     header('Location: login.php');
     exit;
 }

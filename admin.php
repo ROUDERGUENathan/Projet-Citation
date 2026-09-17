@@ -2,7 +2,7 @@
 require 'config/db.php';
 session_start();
 
-if (!isset($_SESSION['admin_id'])) {
+if (!isset($_SESSION['utilisateur_id']) || $_SESSION['utilisateur_role'] !== 'admin') {
     header('Location: login.php');
     exit;
 }
@@ -21,7 +21,8 @@ $nombreCitations = mysqli_num_rows($resultat);
 <header class="topbar">
     <span class="brand">Dictionnaire de citations - Administration</span>
     <nav>
-        <span>Connecte : <?= htmlspecialchars($_SESSION['admin_identifiant']) ?></span>
+        <span>Connecte : <?= htmlspecialchars($_SESSION['utilisateur_identifiant']) ?></span>
+        <a href="admin_utilisateurs.php">Utilisateurs</a>
         <a href="index.php">Voir le site</a>
         <a href="logout.php">Deconnexion</a>
     </nav>

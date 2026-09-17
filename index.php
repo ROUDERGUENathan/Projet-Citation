@@ -31,9 +31,11 @@ $fond = $fonds[array_rand($fonds)];
     <p class="bienvenue">Bienvenue</p>
 
     <div class="coin-connexion">
-        <?php if (isset($_SESSION['admin_id'])): ?>
-            <p>Connecte : <?= htmlspecialchars($_SESSION['admin_identifiant']) ?></p>
-            <a class="lien-connexion" href="admin.php">Espace administrateur</a>
+        <?php if (isset($_SESSION['utilisateur_id'])): ?>
+            <p>Connecte : <?= htmlspecialchars($_SESSION['utilisateur_identifiant']) ?></p>
+            <?php if ($_SESSION['utilisateur_role'] === 'admin'): ?>
+                <a class="lien-connexion" href="admin.php">Espace administrateur</a>
+            <?php endif; ?>
             <a class="lien-connexion" href="logout.php">Deconnexion</a>
         <?php else: ?>
             <form class="connexion-box" method="post" action="login.php">
@@ -43,6 +45,7 @@ $fond = $fonds[array_rand($fonds)];
                 <input type="password" id="mot_de_passe" name="mot_de_passe" required>
                 <button type="submit">Valider</button>
             </form>
+            <p class="lien-retour"><a href="inscription.php">Creer un compte</a> &middot; <a href="mot-de-passe-oublie.php">Mot de passe oublie</a></p>
         <?php endif; ?>
     </div>
 
