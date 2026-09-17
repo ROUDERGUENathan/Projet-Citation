@@ -1,0 +1,358 @@
+:root {
+    --accent: #b7ff5c;
+    --texte-clair: #f5f5f5;
+    --carte-fond: #ffffff;
+    --carte-bordure: #d9c9a3;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #111;
+    color: var(--texte-clair);
+}
+
+/* --- Barre superieure (pages secondaires) --- */
+.topbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(0, 0, 0, 0.65);
+    position: relative;
+    z-index: 10;
+}
+
+.topbar .brand {
+    font-weight: bold;
+    letter-spacing: 0.03em;
+}
+
+.topbar nav {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.topbar a {
+    color: var(--texte-clair);
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.topbar a:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* --- Carrousel d'accueil ---
+   Une seule citation + un seul fond sont affiches a chaque chargement de
+   page ; c'est le <meta http-equiv="refresh"> dans index.php qui recharge
+   la page toutes les 15 secondes pour en afficher une nouvelle. */
+.carousel {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel blockquote {
+    max-width: 45rem;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    margin: 0 0 1rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.carousel .auteur {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.bg-0 { background-image: linear-gradient(160deg, #1b2a4a, #4a6b8a, #e8b45c); }
+.bg-1 { background-image: linear-gradient(160deg, #0f2027, #203a43, #2c5364); }
+.bg-2 { background-image: linear-gradient(160deg, #3a1c71, #d76d77, #ffaf7b); }
+.bg-3 { background-image: linear-gradient(160deg, #134e5e, #71b280); }
+.bg-4 { background-image: linear-gradient(160deg, #16222a, #3a6073); }
+.bg-5 { background-image: linear-gradient(160deg, #4b134f, #c94b4b); }
+
+/* Une simple colline/silhouette en bas a gauche, un seul triangle CSS */
+.silhouette {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 45%;
+    height: 35%;
+    z-index: 1;
+    background: #000;
+    opacity: 0.45;
+    clip-path: polygon(0 100%, 0 30%, 100% 100%);
+}
+
+.bienvenue {
+    position: relative;
+    z-index: 2;
+    font-family: "Brush Script MT", "Segoe Script", cursive;
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin: 1.5rem 0 0 2rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.coin-connexion {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.9);
+    color: #222;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    text-align: right;
+}
+
+.connexion-box {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0.3rem 0.5rem;
+    align-items: center;
+}
+
+.connexion-box label {
+    text-align: right;
+    font-weight: 600;
+}
+
+.connexion-box input {
+    padding: 0.25rem 0.4rem;
+    border: 1px solid #999;
+    border-radius: 3px;
+    font: inherit;
+    width: 10rem;
+}
+
+.connexion-box button {
+    grid-column: 1 / -1;
+    margin-top: 0.4rem;
+    padding: 0.35rem;
+    border: none;
+    border-radius: 4px;
+    background: #333;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.connexion-box button:hover {
+    background: #000;
+}
+
+.coin-connexion .lien-connexion {
+    display: inline-block;
+    color: #222;
+    margin-left: 0.5rem;
+}
+
+.lien-ajouter {
+    position: absolute;
+    left: 50%;
+    bottom: 2rem;
+    transform: translateX(-50%);
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+}
+
+.lien-ajouter:hover {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+/* --- Formulaires (login, ajout, modification) --- */
+.page-form {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(160deg, #1b2a4a, #4a6b8a, #e8b45c);
+    padding: 1.5rem;
+}
+
+.carte {
+    background: #f6ecd9;
+    color: #222;
+    border: 1px solid var(--carte-bordure);
+    border-radius: 8px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 28rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.carte h1 {
+    margin-top: 0;
+    font-size: 1.4rem;
+}
+
+.carte blockquote {
+    margin: 0.5rem 0;
+    font-style: italic;
+}
+
+.carte .auteur {
+    margin: 0 0 1rem;
+    opacity: 0.75;
+}
+
+.carte form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.carte label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.carte input,
+.carte textarea {
+    padding: 0.55rem;
+    border: 1px solid #b8a887;
+    border-radius: 4px;
+    font: inherit;
+    resize: vertical;
+}
+
+.carte button {
+    margin-top: 1.2rem;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 4px;
+    background: #333;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.carte button:hover {
+    background: #000;
+}
+
+.lien-retour {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.alerte {
+    padding: 0.6rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.alerte-erreur {
+    background: #fbdada;
+    border: 1px solid #d98a8a;
+    color: #7a1f1f;
+}
+
+.alerte-succes {
+    background: #dcf5d6;
+    border: 1px solid #8ac98a;
+    color: #1f5c1f;
+}
+
+/* --- Espace administrateur --- */
+.page-admin {
+    background: #1a1a1a;
+}
+
+.conteneur-admin {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.admin-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.bouton {
+    display: inline-block;
+    background: var(--accent);
+    color: #111;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.table-citations {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background: #fff;
+    color: #222;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.table-citations th,
+.table-citations td {
+    text-align: left;
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: top;
+}
+
+.table-citations th {
+    background: #eee;
+}
+
+.actions {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.actions form {
+    margin: 0;
+}
+
+.lien-danger {
+    background: none;
+    border: none;
+    color: #b91c1c;
+    cursor: pointer;
+    font: inherit;
+    padding: 0;
+    text-decoration: underline;
+}
