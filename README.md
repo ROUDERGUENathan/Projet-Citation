@@ -1,8 +1,7 @@
 # Dictionnaire de citations
 
-Site PHP/MySQL (aucun JavaScript : uniquement PHP cote serveur + CSS) ou chaque
-visiteur peut deposer une citation (visible par tous) et un administrateur gere
-l'ensemble du contenu (CRUD).
+Site ou chaque visiteur peut déposer une citation (visible par tous) et un administrateur gère
+l'ensemble du contenu.
 
 Le site est en ligne ici : https://projet-citationnr.gt.tc
 
