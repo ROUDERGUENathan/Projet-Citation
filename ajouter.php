@@ -13,8 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($auteur === '' || $texte === '') {
         $erreur = "Merci de renseigner l'auteur et la citation.";
     } else {
-        // On echappe les valeurs avant de construire la requete SQL
-        // (protection contre les injections SQL).
         $auteurSecurise = mysqli_real_escape_string($connexion, $auteur);
         $texteSecurise = mysqli_real_escape_string($connexion, $texte);
 

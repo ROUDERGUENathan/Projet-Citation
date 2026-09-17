@@ -2,7 +2,6 @@
 require 'config/db.php';
 session_start();
 
-// On recupere UNE citation au hasard dans la base.
 $resultat = mysqli_query($connexion, "SELECT auteur, texte FROM citations ORDER BY RAND() LIMIT 1");
 $citation = mysqli_fetch_assoc($resultat);
 
@@ -13,7 +12,6 @@ if (!$citation) {
     ];
 }
 
-// On choisit un fond au hasard parmi 6 degrades definis dans le CSS (bg-0 a bg-5).
 $fonds = ['bg-0', 'bg-1', 'bg-2', 'bg-3', 'bg-4', 'bg-5'];
 $fond = $fonds[array_rand($fonds)];
 ?>
@@ -22,9 +20,6 @@ $fond = $fonds[array_rand($fonds)];
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Pas de JavaScript autorise : le carrousel est simule par un
-     rechargement automatique de la page toutes les 15 secondes,
-     qui va rechercher une nouvelle citation + un nouveau fond. -->
 <meta http-equiv="refresh" content="15">
 <title>Dictionnaire de citations</title>
 <link rel="stylesheet" href="css/style.css?v=2">

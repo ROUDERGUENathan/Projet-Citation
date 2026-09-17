@@ -13,16 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $identifiant = trim($_POST['identifiant']);
     $motDePasseSaisi = $_POST['mot_de_passe'];
 
-    // On echappe la valeur avant de la mettre dans la requete SQL
-    // (protection contre les injections SQL).
     $identifiantSecurise = mysqli_real_escape_string($connexion, $identifiant);
 
     $requete = "SELECT id, identifiant, mot_de_passe FROM administrateurs WHERE identifiant = '$identifiantSecurise'";
     $resultat = mysqli_query($connexion, $requete);
     $admin = mysqli_fetch_assoc($resultat);
 
-    // password_verify() compare le mot de passe saisi avec le hash
-    // enregistre en base (cree par password_hash() dans setup_admin.php).
     if ($admin && password_verify($motDePasseSaisi, $admin['mot_de_passe'])) {
         $_SESSION['admin_id'] = $admin['id'];
         $_SESSION['admin_identifiant'] = $admin['identifiant'];

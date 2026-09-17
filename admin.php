@@ -2,8 +2,6 @@
 require 'config/db.php';
 session_start();
 
-// Page reservee a l'administrateur : si personne n'est connecte, on
-// redirige vers la page de connexion.
 if (!isset($_SESSION['admin_id'])) {
     header('Location: login.php');
     exit;

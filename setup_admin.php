@@ -1,7 +1,4 @@
 <?php
-// Script a usage unique : cree le premier compte administrateur.
-// A SUPPRIMER une fois le compte cree, pour des raisons de securite.
-
 require 'config/db.php';
 
 $resultat = mysqli_query($connexion, "SELECT COUNT(*) AS total FROM administrateurs");
@@ -18,8 +15,6 @@ if (!$dejaConfigure && $_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($identifiant === '' || strlen($motDePasse) < 6) {
         $erreur = 'Identifiant requis et mot de passe de 6 caracteres minimum.';
     } else {
-        // password_hash() transforme le mot de passe en un "hash" illisible :
-        // on ne stocke jamais le mot de passe en clair dans la base.
         $hash = password_hash($motDePasse, PASSWORD_DEFAULT);
         $identifiantSecurise = mysqli_real_escape_string($connexion, $identifiant);
 
