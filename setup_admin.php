@@ -31,7 +31,7 @@ if (!$dejaConfigure && $_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
 <meta charset="utf-8">
 <title>Configuration initiale - Administrateur</title>
-<link rel="stylesheet" href="css/style.css?v=2">
+<link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body class="page-form">
 <main class="carte">
