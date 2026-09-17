@@ -27,7 +27,7 @@ $fond = $fonds[array_rand($fonds)];
      qui va rechercher une nouvelle citation + un nouveau fond. -->
 <meta http-equiv="refresh" content="15">
 <title>Dictionnaire de citations</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
 <main class="carousel <?= $fond ?>">

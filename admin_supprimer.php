@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmer'])) {
 <head>
 <meta charset="utf-8">
 <title>Supprimer une citation - Administration</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body class="page-form">
 <main class="carte">
