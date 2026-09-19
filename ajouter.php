@@ -1,5 +1,11 @@
 <?php
 require 'config/db.php';
+session_start();
+
+if (!isset($_SESSION['utilisateur_id'])) {
+    header('Location: login.php');
+    exit;
+}
 
 $erreur = '';
 $succes = false;
@@ -30,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
 <meta charset="utf-8">
 <title>Deposer une citation - Dictionnaire de citations</title>
-<link rel="stylesheet" href="css/style.css?v=3">
+<link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body class="page-form">
 <main class="carte">

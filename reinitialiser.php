@@ -39,7 +39,7 @@ if ($lienValide && $_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
 <meta charset="utf-8">
 <title>Nouveau mot de passe - Dictionnaire de citations</title>
-<link rel="stylesheet" href="css/style.css?v=3">
+<link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body class="page-form">
 <main class="carte">

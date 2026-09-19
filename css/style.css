@@ -1,8 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Karla:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
+
 :root {
-    --accent: #b7ff5c;
-    --texte-clair: #f5f5f5;
-    --carte-fond: #ffffff;
-    --carte-bordure: #d9c9a3;
+    --nuit: #141d33;
+    --nuit-clair: #1b2a4a;
+    --ambre: #e8b45c;
+    --citron: #b7ff5c;
+    --creme: #f6ecd9;
+    --creme-fonce: #ebdcbc;
+    --encre: #231f1a;
+    --rouge: #b4362f;
+    --police-texte: "Karla", "Segoe UI", Arial, sans-serif;
+    --police-titre: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 
 * {
@@ -11,9 +19,10 @@
 
 body {
     margin: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #111;
-    color: var(--texte-clair);
+    font-family: var(--police-texte);
+    background: var(--nuit);
+    color: #f5f5f5;
+    line-height: 1.5;
 }
 
 .topbar {
@@ -21,36 +30,38 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1.5rem;
-    background: rgba(0, 0, 0, 0.65);
-    position: relative;
-    z-index: 10;
+    gap: 0.75rem;
+    padding: 0.9rem 1.75rem;
+    background: rgba(10, 16, 32, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .topbar .brand {
-    font-weight: bold;
-    letter-spacing: 0.03em;
+    font-family: var(--police-titre);
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
 }
 
 .topbar nav {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.6rem;
     align-items: center;
     font-size: 0.9rem;
 }
 
 .topbar a {
-    color: var(--texte-clair);
+    color: #f5f5f5;
     text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 0.35rem 0.75rem;
-    border-radius: 4px;
-    transition: background 0.2s;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    transition: background 0.2s, color 0.2s;
 }
 
 .topbar a:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--citron);
+    color: var(--nuit);
 }
 
 .carousel {
@@ -65,20 +76,61 @@ body {
     overflow: hidden;
     background-size: cover;
     background-position: center;
+    box-shadow: inset 0 0 220px rgba(0, 0, 0, 0.35);
 }
 
 .carousel blockquote {
-    max-width: 45rem;
-    font-size: 1.6rem;
-    line-height: 1.5;
-    margin: 0 0 1rem;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 2;
+    max-width: 46rem;
+    margin: 0 0 1.5rem;
+    font-family: var(--police-titre);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 2.2rem;
+    line-height: 1.4;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+    animation: apparition 1.2s ease both;
 }
 
 .carousel .auteur {
-    font-size: 1.1rem;
-    opacity: 0.9;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    animation: apparition 1.2s ease 0.5s both;
+}
+
+.carousel .auteur::before {
+    content: "";
+    display: inline-block;
+    width: 2.5rem;
+    height: 2px;
+    margin-right: 0.9rem;
+    vertical-align: middle;
+    background: var(--citron);
+}
+
+@keyframes apparition {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel blockquote,
+    .carousel .auteur {
+        animation: none;
+    }
 }
 
 .bg-0 { background-image: linear-gradient(160deg, #1b2a4a, #4a6b8a, #e8b45c); }
@@ -96,18 +148,19 @@ body {
     height: 35%;
     z-index: 1;
     background: #000;
-    opacity: 0.45;
+    opacity: 0.5;
     clip-path: polygon(0 100%, 0 30%, 100% 100%);
 }
 
 .bienvenue {
     position: relative;
     z-index: 2;
-    font-family: "Brush Script MT", "Segoe Script", cursive;
-    font-size: 2.5rem;
-    color: var(--accent);
-    margin: 1.5rem 0 0 2rem;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    margin: 0 0 1.5rem;
+    font-family: "Dancing Script", "Brush Script MT", cursive;
+    font-size: 3.2rem;
+    font-weight: 600;
+    color: var(--citron);
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
 }
 
 .coin-connexion {
@@ -115,55 +168,80 @@ body {
     top: 1.5rem;
     right: 1.5rem;
     z-index: 3;
-    background: rgba(255, 255, 255, 0.9);
-    color: #222;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 6px;
-    padding: 0.75rem 1rem;
-    font-size: 0.85rem;
-    text-align: right;
+    width: 17rem;
+    padding: 1rem 1.1rem;
+    background: rgba(20, 29, 51, 0.55);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    font-size: 0.9rem;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.coin-connexion p {
+    margin: 0 0 0.6rem;
 }
 
 .connexion-box {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 0.3rem 0.5rem;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
 .connexion-box label {
-    text-align: right;
     font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.85;
 }
 
 .connexion-box input {
-    padding: 0.25rem 0.4rem;
-    border: 1px solid #999;
-    border-radius: 3px;
+    padding: 0.5rem 0.65rem;
+    margin-bottom: 0.4rem;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--encre);
     font: inherit;
-    width: 10rem;
+}
+
+.connexion-box input:focus {
+    outline: none;
+    border-color: var(--citron);
+    box-shadow: 0 0 0 3px rgba(183, 255, 92, 0.35);
 }
 
 .connexion-box button {
-    grid-column: 1 / -1;
-    margin-top: 0.4rem;
-    padding: 0.35rem;
+    margin-top: 0.3rem;
+    padding: 0.6rem;
     border: none;
-    border-radius: 4px;
-    background: #333;
-    color: #fff;
+    border-radius: 8px;
+    background: var(--citron);
+    color: var(--nuit);
+    font: inherit;
+    font-weight: 700;
     cursor: pointer;
-    font-weight: 600;
+    transition: background 0.2s;
 }
 
 .connexion-box button:hover {
-    background: #000;
+    background: #d4ff8f;
+}
+
+.coin-connexion a {
+    color: var(--citron);
 }
 
 .coin-connexion .lien-connexion {
     display: inline-block;
-    color: #222;
-    margin-left: 0.5rem;
+    margin-right: 0.9rem;
+}
+
+.coin-connexion .lien-retour {
+    margin: 0.75rem 0 0;
+    font-size: 0.82rem;
 }
 
 .lien-ajouter {
@@ -172,17 +250,22 @@ body {
     bottom: 2rem;
     transform: translateX(-50%);
     z-index: 3;
-    background: rgba(0, 0, 0, 0.55);
-    color: #fff;
-    text-decoration: none;
-    padding: 0.6rem 1.2rem;
+    padding: 0.7rem 1.5rem;
+    background: rgba(20, 29, 51, 0.55);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    font-size: 0.9rem;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
 }
 
 .lien-ajouter:hover {
-    background: rgba(0, 0, 0, 0.75);
+    background: var(--citron);
+    color: var(--nuit);
 }
 
 .page-form {
@@ -190,80 +273,110 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(160deg, #1b2a4a, #4a6b8a, #e8b45c);
     padding: 1.5rem;
+    background: linear-gradient(160deg, #1b2a4a, #4a6b8a, #e8b45c);
 }
 
 .carte {
-    background: #f6ecd9;
-    color: #222;
-    border: 1px solid var(--carte-bordure);
-    border-radius: 8px;
-    padding: 2rem;
     width: 100%;
     max-width: 28rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    padding: 2.2rem;
+    background: var(--creme);
+    color: var(--encre);
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 24px 60px rgba(10, 16, 32, 0.45);
 }
 
 .carte h1 {
-    margin-top: 0;
-    font-size: 1.4rem;
+    margin: 0 0 1rem;
+    font-family: var(--police-titre);
+    font-size: 1.8rem;
+    line-height: 1.2;
+}
+
+.carte p {
+    margin: 0 0 1rem;
 }
 
 .carte blockquote {
     margin: 0.5rem 0;
+    font-family: var(--police-titre);
     font-style: italic;
+    font-size: 1.15rem;
 }
 
 .carte .auteur {
     margin: 0 0 1rem;
-    opacity: 0.75;
+    opacity: 0.7;
 }
 
 .carte form {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.35rem;
 }
 
 .carte label {
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
+    margin-top: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #5a4f3c;
 }
 
 .carte input,
 .carte textarea {
-    padding: 0.55rem;
-    border: 1px solid #b8a887;
-    border-radius: 4px;
+    padding: 0.7rem 0.8rem;
+    border: 1.5px solid #d8c9a6;
+    border-radius: 8px;
+    background: #fffdf8;
+    color: var(--encre);
     font: inherit;
     resize: vertical;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.carte input:focus,
+.carte textarea:focus {
+    outline: none;
+    border-color: var(--nuit-clair);
+    box-shadow: 0 0 0 3px rgba(232, 180, 92, 0.4);
 }
 
 .carte button {
-    margin-top: 1.2rem;
-    padding: 0.6rem;
+    margin-top: 1.4rem;
+    padding: 0.8rem;
     border: none;
-    border-radius: 4px;
-    background: #333;
+    border-radius: 8px;
+    background: var(--nuit-clair);
     color: #fff;
+    font: inherit;
+    font-weight: 700;
     cursor: pointer;
-    font-weight: 600;
+    transition: background 0.2s;
 }
 
 .carte button:hover {
-    background: #000;
+    background: var(--nuit);
+}
+
+.carte a {
+    color: var(--nuit-clair);
+}
+
+.carte a:hover {
+    color: var(--rouge);
 }
 
 .lien-retour {
-    margin-top: 1rem;
+    margin: 0.9rem 0 0;
     font-size: 0.9rem;
 }
 
 .alerte {
-    padding: 0.6rem 0.8rem;
-    border-radius: 4px;
+    padding: 0.7rem 0.9rem;
+    border-radius: 8px;
     font-size: 0.9rem;
 }
 
@@ -280,13 +393,20 @@ body {
 }
 
 .page-admin {
-    background: #1a1a1a;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #141d33, #0b1020);
 }
 
 .conteneur-admin {
-    max-width: 60rem;
+    max-width: 62rem;
     margin: 0 auto;
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
+}
+
+.conteneur-admin h1 {
+    margin: 0;
+    font-family: var(--police-titre);
+    font-size: 2rem;
 }
 
 .admin-actions {
@@ -299,52 +419,137 @@ body {
 
 .bouton {
     display: inline-block;
-    background: var(--accent);
-    color: #111;
+    padding: 0.6rem 1.3rem;
+    background: var(--citron);
+    color: var(--nuit);
+    border-radius: 999px;
+    font-weight: 700;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.bouton:hover {
+    background: #d4ff8f;
 }
 
 .table-citations {
     width: 100%;
+    margin-top: 1.5rem;
     border-collapse: collapse;
-    margin-top: 1rem;
-    background: #fff;
-    color: #222;
-    border-radius: 6px;
+    background: var(--creme);
+    color: var(--encre);
+    border-radius: 14px;
     overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
 .table-citations th,
 .table-citations td {
+    padding: 0.85rem 1rem;
     text-align: left;
-    padding: 0.6rem 0.8rem;
-    border-bottom: 1px solid #e0e0e0;
-    vertical-align: top;
+    vertical-align: middle;
+    border-bottom: 1px solid #eadfc4;
 }
 
 .table-citations th {
-    background: #eee;
+    background: var(--creme-fonce);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #5a4f3c;
+}
+
+.table-citations tbody tr:hover {
+    background: #fbf4e4;
+}
+
+.table-citations tbody tr:last-child td {
+    border-bottom: none;
 }
 
 .actions {
-    display: flex;
-    gap: 0.6rem;
-    align-items: center;
+    white-space: nowrap;
 }
 
-.actions form {
-    margin: 0;
+.actions a {
+    display: inline-block;
+    margin: 0.15rem 0.3rem 0.15rem 0;
+    padding: 0.25rem 0.8rem;
+    border: 1px solid #cdbb92;
+    border-radius: 999px;
+    color: var(--nuit-clair);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
 }
 
-.lien-danger {
-    background: none;
-    border: none;
-    color: #b91c1c;
-    cursor: pointer;
-    font: inherit;
-    padding: 0;
-    text-decoration: underline;
+.actions a:hover {
+    background: var(--nuit-clair);
+    color: #fff;
+}
+
+.actions .lien-danger {
+    border-color: #e0b3af;
+    color: var(--rouge);
+}
+
+.actions .lien-danger:hover {
+    background: var(--rouge);
+    color: #fff;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.15rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.badge-admin {
+    background: var(--ambre);
+    color: #3a2a08;
+}
+
+.badge-visiteur {
+    background: #dfe6f2;
+    color: var(--nuit-clair);
+}
+
+@media (max-width: 720px) {
+    .carousel {
+        justify-content: flex-start;
+        padding: 1.25rem 1.25rem 6rem;
+    }
+
+    .carousel blockquote {
+        font-size: 1.55rem;
+    }
+
+    .bienvenue {
+        margin: 1rem 0;
+        font-size: 2.6rem;
+    }
+
+    .coin-connexion {
+        position: static;
+        width: 100%;
+        max-width: 20rem;
+        margin-bottom: 2rem;
+    }
+
+    .topbar {
+        padding: 0.8rem 1rem;
+    }
+
+    .conteneur-admin {
+        padding: 1.25rem 1rem;
+    }
+
+    .table-citations {
+        display: block;
+        overflow-x: auto;
+    }
 }

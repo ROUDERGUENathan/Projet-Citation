@@ -22,7 +22,7 @@ $fond = $fonds[array_rand($fonds)];
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="refresh" content="15">
 <title>Dictionnaire de citations</title>
-<link rel="stylesheet" href="css/style.css?v=3">
+<link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
 <main class="carousel <?= $fond ?>">

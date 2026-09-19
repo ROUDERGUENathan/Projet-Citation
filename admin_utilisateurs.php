@@ -15,7 +15,7 @@ $nombreUtilisateurs = mysqli_num_rows($resultat);
 <head>
 <meta charset="utf-8">
 <title>Utilisateurs - Administration</title>
-<link rel="stylesheet" href="css/style.css?v=3">
+<link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body class="page-admin">
 <header class="topbar">
@@ -48,7 +48,7 @@ $nombreUtilisateurs = mysqli_num_rows($resultat);
                 <tr>
                     <td><?= htmlspecialchars($utilisateur['identifiant']) ?></td>
                     <td><?= htmlspecialchars($utilisateur['email']) ?></td>
-                    <td><?= htmlspecialchars($utilisateur['role']) ?></td>
+                    <td><span class="badge badge-<?= htmlspecialchars($utilisateur['role']) ?>"><?= htmlspecialchars($utilisateur['role']) ?></span></td>
                     <td><?= htmlspecialchars(date('d/m/Y H:i', strtotime($utilisateur['date_inscription']))) ?></td>
                     <td class="actions">
                         <a href="admin_utilisateur_modifier.php?id=<?= (int) $utilisateur['id'] ?>">Modifier</a>
