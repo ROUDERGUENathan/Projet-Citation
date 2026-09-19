@@ -15,7 +15,7 @@ $nombreCitations = mysqli_num_rows($resultat);
 <head>
 <meta charset="utf-8">
 <title>Administration - Dictionnaire de citations</title>
-<link rel="stylesheet" href="css/style.css?v=4">
+<link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body class="page-admin">
 <header class="topbar">

@@ -369,7 +369,8 @@ body {
     color: var(--rouge);
 }
 
-.lien-retour {
+.lien-retour,
+.carte .lien-retour {
     margin: 0.9rem 0 0;
     font-size: 0.9rem;
 }
