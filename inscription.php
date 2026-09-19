@@ -19,6 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($identifiant === '' || $email === '' || $motDePasse === '') {
         $erreur = 'Merci de remplir tous les champs.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $erreur = 'Merci de saisir une adresse email valide.';
     } elseif (strlen($motDePasse) < 6) {
         $erreur = 'Le mot de passe doit contenir au moins 6 caracteres.';
     } elseif ($motDePasse !== $motDePasseConfirmation) {

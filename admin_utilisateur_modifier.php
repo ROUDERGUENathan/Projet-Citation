@@ -27,6 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($identifiant === '' || $email === '') {
         $erreur = 'Merci de renseigner l\'identifiant et l\'email.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $erreur = 'Merci de saisir une adresse email valide.';
     } else {
         $identifiantSecurise = mysqli_real_escape_string($connexion, $identifiant);
         $emailSecurise = mysqli_real_escape_string($connexion, $email);
