@@ -79,3 +79,6 @@ css/style.css                           Mise en forme + carrousel en CSS pur
    (directement en ligne, jamais dans ce depot).
 6. Creer un compte via `inscription.php`, puis se faire promouvoir administrateur
    directement en base de donnees (premier compte uniquement).
+7. Compte administrateur
+   Nom : admin
+   Mot de passe : admin1234
